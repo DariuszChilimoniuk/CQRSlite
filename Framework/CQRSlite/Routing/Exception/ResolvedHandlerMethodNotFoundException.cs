@@ -7,7 +7,7 @@ namespace CQRSlite.Routing.Exception
         public ResolvedHandlerMethodNotFoundException(string paramName)
             : base($"Could not execute Handle method on type {paramName}")
         {
-            var a = 1;
+
         }
     }
 }
