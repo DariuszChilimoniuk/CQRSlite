@@ -39,7 +39,7 @@ namespace CQRSlite.Tests.Routing
                 foreach (var type in eventtypes)
                 {
                     var @event = Activator.CreateInstance(type);
-#if NETCOREAPP1_0
+#if NETCOREAPP1_0 || NETCOREAPP2_2
                     try
                     {
                         await item.Handler(@event, new CancellationToken());
