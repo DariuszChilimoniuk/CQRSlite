@@ -8,7 +8,7 @@
     @foreach (var inventoryItemListDto in Model)
 {
     <li>
-        @Html.ActionLink("Name: " + inventoryItemListDto.Name, "Details", new { Id = inventoryItemListDto.Id })
+        @Html.ActionLink("Name: " + inventoryItemListDto.Name + "  [" + inventoryItemListDto.Id + "]", "Details", new { Id = inventoryItemListDto.Id })
     </li>
 }
 </ul>

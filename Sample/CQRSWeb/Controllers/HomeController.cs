@@ -54,6 +54,12 @@ namespace CQRSWeb.Controllers
         [HttpPost]
         public async Task<ActionResult> ChangeName(Guid id, string name, int version, CancellationToken cancellationToken)
         {
+            if (String.IsNullOrWhiteSpace(name))
+            {
+                ViewData.Model = await _queryProcessor.Query(new GetInventoryItemDetails(id));
+                return View();
+            }
+
             await _commandSender.Send(new RenameInventoryItem(id, name, version), cancellationToken);
             return RedirectToAction("Index");
         }
