@@ -45,12 +45,12 @@ namespace CQRSlite.Tests.Routing
                 foreach (var type in eventtypes)
                 {
                     var @event = Activator.CreateInstance(type);
-#if NETCOREAPP1_0 || NETCOREAPP2_2
+#if NETCOREAPP1_0
                     try
                     {
                         await item.Handler(@event, new CancellationToken());
                     }
-                    //.NET Core 1.0 / 2.2 version of the library does not support explict interfaces, so these exceptions are expected
+                    //.NET Core 1.0 version of the library does not support explict interfaces, so these exceptions are expected
                     catch (ResolvedHandlerMethodNotFoundException)
                     {
                         Assert.Equal(typeof(TestAggregateDoSomething), item.Type);
